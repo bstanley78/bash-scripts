@@ -1,4 +1,18 @@
 #!/bin/bash
 # logs.sh
+#
+# example: logs auth-service-develop-app
+# example: logs auth-service-develop-app us-east-1
 
-awslogs get /aws/lambda/$1 ALL --aws-region us-east-1 --watch
+REGION=na
+
+if [ -z "$2" ]
+  then
+    echo "No region supplied, using 'us-east-1'"
+    REGION=us-east-1
+  else
+    echo "Using supplied region $2"
+    REGION=$2
+fi
+
+awslogs get /aws/lambda/$1 ALL --aws-region $REGION --watch
