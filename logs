@@ -1,0 +1,4 @@
+#!/bin/bash
+# logs.sh
+
+awslogs get /aws/lambda/$1 ALL --aws-region us-east-1 --watch

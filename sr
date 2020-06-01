@@ -1,0 +1,4 @@
+#!/bin/bash
+# sr.sh
+
+aws secretsmanager get-secret-value --secret-id $1 --query SecretString --output text | python3 -m json.tool

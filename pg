@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Command to start the container, if it hasn't been created yet.
+# docker run --name postgres-localhost -p 5432:5432 -v /home/brian/Documents/postgres_data:/var/lib/postgresql/data -d postgres:11.6-alpine
+
+# Crontab command:  @reboot docker container start postgres-localhost
+
+# Command to fire it up
+docker container start postgres-localhost
+
