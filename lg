@@ -1,0 +1,17 @@
+#!/bin/bash
+# https://github.com/jorgebastida/awslogs
+#
+# example: logs auth-service-develop-app
+# example: logs auth-service-develop-app us-east-1
+
+REGION=us-east-1
+
+if [ -z "$1" ]
+  then
+    echo "No search"
+    awslogs groups --aws-region $REGION
+  else
+    echo "Searching $1"
+    awslogs groups --aws-region $REGION | grep $1
+fi
+

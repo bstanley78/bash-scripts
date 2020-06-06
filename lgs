@@ -1,0 +1,23 @@
+#!/bin/bash
+# https://github.com/jorgebastida/awslogs
+#
+# Retrieves cloudwatch logs from the past 2 hours.
+#
+# example: lgs <lambda_name> <search_term>
+# 
+# example: lgs /aws/lambda/relief-service-lambda-master-app
+# example: lgs /aws/lambda/relief-service-lambda-master-app ERROR
+
+REGION=us-east-1
+START="2h ago"
+
+if [ -z "$2" ]
+  then
+    echo "No search params supplied.  Returning records from $START."
+    awslogs get $1 ALL --aws-region $REGION --start=$START
+  else
+    echo "Using search param $2.  Returning records from $START."
+    awslogs get $1 ALL --aws-region $REGION --start=$START | grep $2
+fi
+
+
